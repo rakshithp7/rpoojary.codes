@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FileExplorer } from '@/components/FileExplorer';
 import { FileNode } from '@/data/directoryStructure';
 import { ContentPanel } from '@/components/ContentPanel';
