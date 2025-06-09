@@ -102,7 +102,7 @@ export const portfolioProjects: PortfolioProject[] = [
     title: 'React Deepface Song Suggestion',
     image: '/images/projects/deepface.png',
     tech: 'ReactJS',
-    description: 'Under Development. React web app to analyze face expression and suggest music based on emotion/mood.',
+    description: 'React web app to analyze face expression and suggest music based on emotion/mood.',
     categories: 'ReactJS, DeepFace API, Spotify API',
     demo: null,
     github: 'https://github.com/rakshithp7/deepface-react',

@@ -23,7 +23,9 @@ const ContentSection: React.FC<{
   <div className="space-y-6">
     <div className="flex items-center gap-3 mb-6">
       <Icon className="w-6 h-6 transition-colors duration-300 text-[#8B7355] dark:text-blue-400" />
-      <h1 className="text-3xl font-bold transition-colors duration-300 text-[#2D2A26] dark:text-gray-100">{title}</h1>
+      <h1 className="text-xl md:text-3xl font-bold transition-colors duration-300 text-[#2D2A26] dark:text-gray-100">
+        {title}
+      </h1>
     </div>
     {children}
   </div>
@@ -369,10 +371,10 @@ export const ContentPanel: React.FC<ContentPanelProps> = ({ selectedNode }) => {
     <div
       tabIndex={-1}
       className={cn(
-        'h-full backdrop-blur-sm border rounded-lg rounded-tl-none p-8 my-1 mr-1 overflow-y-auto transition-colors duration-300',
+        'h-full backdrop-blur-sm border rounded-b-lg md:rounded-l-none md:rounded-tr-lg p-4 md:p-8 my-1 mx-1 md:mr-1 md:ml-0 overflow-y-auto rounded-t-none transition-colors duration-300',
         'bg-white/15 border-black/5 dark:bg-white/5 dark:border-white/5'
       )}>
-      <div className="max-w-7xl mx-auto pb-12">{getContentForSection(selectedNode?.content || 'default')}</div>
+      <div className="max-w-7xl mx-auto pb-20">{getContentForSection(selectedNode?.content || 'default')}</div>
     </div>
   );
 };
