@@ -31,7 +31,9 @@ export function SocialDock({ className }: SocialDockProps) {
   return (
     <div className={cn('flex flex-col items-center justify-center', className)} tabIndex={-1}>
       <TooltipProvider>
-        <Dock direction="middle" className="bg-custom-brown dark:bg-white/10 space-x-2 px-4 shadow-md border-black/10">
+        <Dock
+          direction="middle"
+          className={cn('space-x-2 px-4 shadow-md backdrop-blur-sm', 'bg-secondary border dark:bg-secondary/30')}>
           {socialLinks.map((social) => (
             <DockIcon key={social.name}>
               <Tooltip>
@@ -39,11 +41,15 @@ export function SocialDock({ className }: SocialDockProps) {
                   <a
                     href={social.url}
                     aria-label={social.name}
-                    className="flex h-full w-full items-center justify-center rounded-full transition-all hover:bg-white/20"
+                    className={cn(
+                      'flex h-full w-full items-center justify-center rounded-full transition-all',
+                      'text-muted-foreground hover:bg-primary/20 hover:text-primary-foreground focus-visible:outline-hidden',
+                      'focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background'
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                     tabIndex={-1}>
-                    <social.icon className="h-5 w-5" />
+                    <social.icon className="h-5 w-5 transition-colors" />
                   </a>
                 </TooltipTrigger>
                 <TooltipContent>

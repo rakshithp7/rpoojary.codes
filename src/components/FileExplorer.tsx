@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, KeyboardEvent } from 'react';
 import { ChevronDown, ChevronRight, Folder, FolderOpen, File } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { directoryStructure, FileNode } from '@/data/directoryStructure';
-import { DarkModeToggle } from './DarkModeToggle';
+import { ThemeToggle } from './ThemeToggle';
 
 interface FileExplorerProps {
   onSelectNode: (node: FileNode) => void;
@@ -95,9 +95,9 @@ const FileTreeNode: React.FC<{
         ref={nodeRef}
         className={cn(
           'flex items-center gap-2 px-2 py-1.5 md:py-1.5 rounded-md cursor-pointer transition-all duration-200 group select-none',
-          'hover:bg-white/10 hover:scale-[1.02] dark:hover:bg-white/10 dark:hover:scale-[1.02]',
-          isSelected && 'bg-[#8B7355]/20 text-[#8B7355] dark:bg-blue-500/20 dark:text-blue-300',
-          'focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B7355] dark:focus-visible:ring-blue-400 focus-visible:ring-opacity-70'
+          'hover:bg-primary/10 hover:scale-[1.02]',
+          isSelected && 'bg-primary/15 text-primary dark:bg-primary/25',
+          'focus:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-opacity-70'
         )}
         style={{ paddingLeft: `${depth * 16 + 8}px` }}
         onClick={handleClick}
@@ -120,16 +120,16 @@ const FileTreeNode: React.FC<{
         <IconComponent
           className={cn(
             'w-4 h-4 md:w-4 md:h-4 transition-colors duration-200',
-            isSelected ? 'text-[#8B7355] dark:text-blue-300' : 'text-[#6B5B4F] dark:text-gray-400',
-            'group-hover:text-[#8B7355] dark:group-hover:text-blue-300'
+            isSelected ? 'text-primary' : 'text-muted-foreground',
+            'group-hover:text-primary'
           )}
         />
 
         <span
           className={cn(
             'font-medium transition-colors duration-200 text-sm md:text-base',
-            isSelected ? 'text-[#8B7355] dark:text-blue-300' : 'text-[#2D2A26] dark:text-gray-200',
-            'group-hover:text-[#8B7355] dark:group-hover:text-blue-300'
+            isSelected ? 'text-primary' : 'text-foreground',
+            'group-hover:text-primary'
           )}>
           {node.name}
         </span>
@@ -215,8 +215,8 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({ onSelectNode, select
     <div
       ref={explorerRef}
       className={cn(
-        'h-full backdrop-blur-sm border rounded-t-lg md:rounded-bl-lg md:rounded-tr-none p-4 my-1 md:ml-1 mx-1  overflow-y-auto transition-colors duration-300',
-        'bg-white/15 border-black/5 dark:bg-white/5 dark:border-white/5'
+        'h-full backdrop-blur-xs border rounded-t-lg md:rounded-bl-lg md:rounded-tr-none p-4 my-1 md:ml-1 mx-1  overflow-y-auto transition-colors duration-300',
+        'bg-card/20 border-border/20 dark:bg-foreground/10 dark:border-border/30'
       )}
       role="tree"
       aria-label="File Explorer">
@@ -225,19 +225,19 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({ onSelectNode, select
           <h2
             className={cn(
               'text-lg font-semibold mb-2 transition-colors duration-300',
-              'text-[#2D2A26] dark:text-gray-200 flex items-center gap-2'
+              'text-foreground flex items-center gap-2'
             )}>
-            Explorer <span className="text-sm text-gray-500 border px-1 pt-0.5 rounded-sm hidden md:inline">TAB</span>
+            Explorer <span className="text-sm text-muted-foreground border border-border/50 px-1 pt-0.5 rounded-sm hidden md:inline">TAB</span>
           </h2>
           <div className="pb-1">
-            <DarkModeToggle />
+            <ThemeToggle />
           </div>
         </div>
 
         <div
           className={cn(
-            'h-px bg-gradient-to-r transition-colors duration-300',
-            'from-[#8B7355]/30 to-transparent dark:from-blue-400/30 dark:to-transparent'
+            'h-px bg-linear-to-r transition-colors duration-300',
+            'from-primary/25 to-transparent'
           )}
         />
       </div>

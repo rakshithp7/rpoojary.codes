@@ -1,49 +1,26 @@
-export interface SocialLink {
-  platform: string;
-  url: string;
-  icon: string;
+export interface ContactItem {
+  label: string;
+  value: string;
+  type?: 'basic' | 'status' | 'social';
+  available?: boolean; // for status items
 }
 
-export interface ContactInfo {
-  email?: string;
-  location?: string;
-  phone?: string;
-  socialLinks: {
-    linkedin: SocialLink;
-    github: SocialLink;
-    email: SocialLink;
-  };
-  status: {
-    available: boolean;
-    message: string;
-    details: string;
-  };
-}
+export const contactData: ContactItem[] = [
+  // Basic info
+  // { label: 'Email', value: 'rakshithp7@gmail.com', type: 'basic' },
+  { label: 'Location', value: 'Tampa, FL', type: 'basic' },
+  // { label: 'Phone', value: '+1 (656) 574-0676', type: 'basic' },
 
-export const contactData: ContactInfo = {
-  //   email: 'rakshithp7@gmail.com',
-  location: 'Tampa, FL',
-  //   phone: '+1 (656) 574-0676',
-  socialLinks: {
-    linkedin: {
-      platform: 'LinkedIn',
-      url: 'https://linkedin.com/in/rpoojary7',
-      icon: 'Linkedin',
-    },
-    github: {
-      platform: 'GitHub',
-      url: 'https://github.com/rakshithp7',
-      icon: 'Github',
-    },
-    email: {
-      platform: 'Send Email',
-      url: 'mailto:rakshithp7@gmail.com',
-      icon: 'Mail',
-    },
+  // Social links
+  { label: 'LinkedIn', value: 'https://linkedin.com/in/rpoojary7', type: 'social' },
+  { label: 'GitHub', value: 'https://github.com/rakshithp7', type: 'social' },
+  { label: 'Email', value: 'mailto:rakshithp7@gmail.com', type: 'social' },
+
+  // Status
+  { label: 'Status', value: 'Available for new opportunities', type: 'status', available: true },
+  {
+    label: 'Details',
+    value: 'Currently looking for full-time positions in software development roles.',
+    type: 'status',
   },
-  status: {
-    available: true,
-    message: 'Available for new opportunities',
-    details: 'Currently looking for full-time positions in software development roles.',
-  },
-};
+];
